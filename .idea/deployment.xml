@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="CD_A100_mm_safety" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="CD_A100_mm_safety">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/data/huangyoucheng/mm-safety" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>
