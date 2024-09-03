@@ -51,13 +51,17 @@ print('[Initialization Finished]\n')
 if not os.path.exists(args.save_dir):
     os.mkdir(args.save_dir)
 
+if args.attack_text_path.endswith('jsonl'):
+    import json
+    targets = []
+    with open(args.attack_text_path, 'r') as f:
+        for line in f:
+            targets.append(json.loads(line)['response'])
+else:
+    import pandas as pd
+    targets = pd.read_csv(args.attack_text_path, names=['text', 'other'])['text'].tolist()
 
-targets = []
-with open(args.train_data_file, 'r') as f:
-    for line in f:
-        targets.append(json.loads(line)['response'])
-
-print(targets)
+# print(targets)
 targets = targets[:6000]
 
 all_image_files = os.listdir(args.image_path)

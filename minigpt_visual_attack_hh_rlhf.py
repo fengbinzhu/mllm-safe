@@ -84,12 +84,15 @@ print('[Initialization Finished]\n')
 if not os.path.exists(args.save_dir):
     os.mkdir(args.save_dir)
 
-import json
-
-data = []
-with open(args.train_data_file, 'r') as f:
-    for line in f:
-        data.append(json.loads(line))
+if args.train_data_file.endswith('jsonl'):
+    import json
+    data = []
+    with open(args.train_data_file, 'r') as f:
+        for line in f:
+            data.append(json.loads(line))
+else:
+    import pandas as pd
+    data = pd.read_csv(args.train_data_file, names=['response', 'prompt']).fillna('').to_dict(orient='records')
 
 all_image_files = os.listdir(args.image_path)
 all_image_files = sorted(all_image_files)
